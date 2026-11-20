@@ -559,7 +559,33 @@
   .hero-ctas-small .btn{padding:8px 14px; font-size:13px; background:var(--white); border:1px solid var(--line); color:var(--ink);}
   .hero-ctas-small .btn:hover{border-color:var(--accent); color:var(--accent-dark);}  .hero-line-note{color:#AEB4C6;}
   .hero-ctas-small .btn{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.25); color:#E7EAF2;}
-  .hero-ctas-small .btn:hover{border-color:var(--gold-light); color:var(--gold-light);}  /* 印刷（A4）用：画面の表示には影響しない */
+  .hero-ctas-small .btn:hover{border-color:var(--gold-light); color:var(--gold-light);}  /* 料金表の下の相談枠 */
+  .price-cta{margin-top:22px; background:var(--white); border:2px solid #06C755; border-radius:4px; padding:22px 18px; text-align:center;}
+  .price-cta .pc-lead{font-family:"Noto Serif JP",serif; font-size:19px; font-weight:700; color:var(--ink); margin-bottom:6px;}
+  .price-cta .pc-text{font-size:13.5px; line-height:1.8; color:var(--ink-soft); margin-bottom:14px;}
+  .price-cta .btn-line{padding:15px 22px; font-size:15px; width:100%; max-width:360px;}
+  .price-cta .pc-sub{margin-top:12px; font-size:13px;}
+  .price-cta .pc-sub a{color:var(--ink-soft); font-weight:700; text-decoration:underline;}
+  /* 大きな事例は折りたたむ */
+  .more-cases{margin-top:8px;}
+  .more-cases > summary{list-style:none; cursor:pointer; text-align:center; font-weight:700; font-size:14px; color:var(--accent-dark); background:var(--white); border:1px solid var(--line); border-radius:2px; padding:12px 18px; max-width:420px; margin:0 auto;}
+  .more-cases > summary::-webkit-details-marker{display:none;}
+  .more-cases > summary::after{content:" ＋";}
+  .more-cases[open] > summary::after{content:" －";}
+  .more-cases[open] > summary{margin-bottom:20px;}
+  /* 小さいスマホで料金表の1列目が細くなりすぎないように */
+  @media(max-width:380px){
+    table.price th, table.price td{padding:12px 6px;}
+    table.price th:first-child, table.price td:first-child{min-width:8.6em; font-size:12.5px;}
+    table.price td:nth-child(2), table.price th:nth-child(2){white-space:normal !important; font-size:12px;}
+    table.price td:last-child{font-size:13px;}
+    .float-bar a{font-size:12.5px; padding:14px 4px; gap:4px; white-space:nowrap;}
+  }
+  /* スマホの折り返し：1文字だけ次の行に残らないように、日本語は文節で折り返す */
+  body{word-break:auto-phrase;}
+  p,li,td,th,summary,.rl-title,.rl-text,.case-note,.case-point,.bc-note,.ic-text,.ic-name,.bc-name,.kw,.cs-value,.cs-label,.case-title,.btn{text-wrap:pretty;}
+  h1,h2,h3{text-wrap:balance;}
+  @media(max-width:360px){ p .nb,li .nb,td .nb,th .nb,.rl-text .nb,.notice .nb{white-space:normal;} }  /* 印刷（A4）用：画面の表示には影響しない */
   @media print{
     @page{size:A4; margin:12mm 10mm;}
     html,body{background:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
@@ -736,7 +762,10 @@
     <div class="head">
       <span class="eyebrow">実績</span>
       <h2>遺品整理の対応実績</h2>
+      <p><span class="nb">押入れ1つ・1部屋の整理から、</span><span class="nb">ご実家一軒まで対応しています。</span></p>
     </div>
+    <details class="more-cases">
+      <summary>ご実家一軒の遺品整理の事例を見る</summary>
     <div class="case-study">
       <div class="case-photos">
         <div class="case-photo">
@@ -766,6 +795,7 @@
         <p class="case-point">「加西市空き家家財道具等処分支援補助金」の申請をお手伝いし、10万円の補助を受けられました。補助金が使えるか、お見積りの際にお気軽にご相談ください。</p>
       </div>
     </div>
+    </details>
   </div>
 </section>
 
@@ -808,14 +838,18 @@
       <h2><span class="nb">お部屋の広さでわかる、</span><br><span class="nb">費用の目安</span></h2>
     </div>
     <table class="price">
-      <tr><th>間取り・広さの目安</th><th>作業時間目安</th><th><span class="nb">料金目安</span><br><span class="nb">（税込）</span></th></tr>
-      <tr><td><span class="nb">押入れ・物置・1R半分</span></td><td>1〜2時間</td><td>25,000円〜</td></tr>
+      <tr><th>広さの目安</th><th>作業時間目安</th><th><span class="nb">料金目安</span><br><span class="nb">（税込）</span></th></tr>
+      <tr><td>押入れ・物置・<br>1R半分</td><td>1〜2時間</td><td>25,000円〜</td></tr>
       <tr><td>1K・1DK程度</td><td>2〜4時間</td><td>45,000円〜</td></tr>
-      <tr><td>1DK・1LDK程度</td><td>3〜6時間</td><td>80,000円〜</td></tr>
-      <tr><td>1LDK・2LDK程度</td><td>4〜8時間</td><td><span class="nb">120,000円〜</span></td></tr>
-      <tr><td><span class="nb">ご実家まるごと</span><br><span class="nb">戸建て一軒</span></td><td><span class="nb">1日〜</span><span class="nb">複数日</span></td><td><span class="nb">要現地見積り</span></td></tr>
+      <tr><td>広いお部屋・<br>ご実家一軒</td><td><span class="nb">物の量に</span><span class="nb">応じて</span></td><td><span class="nb">現地で</span><span class="nb">お見積り</span></td></tr>
     </table>
     <p class="price-note">正確な金額は、物の量や作業内容を確認したうえでお見積りします。供養・お焚き上げや形見分けの発送をご希望の場合は、お見積りの際にお伝えください。</p>
+    <div class="price-cta">
+      <p class="pc-lead"><span class="nb">ご実家の場合はいくら？</span></p>
+      <p class="pc-text"><span class="nb">LINEで写真を送っていただくだけで、</span><span class="nb">おおよその金額をお伝えします。</span><br><span class="nb">お見積り・出張費は無料。</span><span class="nb">お見積り後のお断りも大丈夫です。</span><br><span class="nb">売れる品は買い取って、</span><span class="nb">費用から差し引きます。</span></p>
+      <a href="https://lin.ee/auAzwZU" target="_blank" rel="noopener" onclick="gtagReportLineConversion();" class="btn btn-line">💬 LINEで写真を送って見積り</a>
+      <p class="pc-sub"><a href="tel:07085816921" onclick="return gtagReportCallConversion(this.href);">📞 電話で相談する</a>　<a href="#form">✎ フォームで相談する</a></p>
+    </div>
   </div>
 </section>
 
